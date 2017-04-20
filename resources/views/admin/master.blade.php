@@ -52,7 +52,7 @@
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }}</a>
                         </li>
-                        <li><a href="{{ URL::route('admin.user.getEdit',Auth::user()->id) }}"><i class="fa fa-sign-out fa-fw"></i> Account Setting</a>
+                        <li><a href="{{ URL::route('admin.getEdit',Auth::user()->id) }}"><i class="fa fa-sign-out fa-fw"></i> Account Setting</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="{{ url('auth/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
@@ -67,7 +67,9 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        
+                         <li>
+                            <a href="{{ url('/') }}"><i class="fa fa-dashboard fa-fw"></i> HomePages</a>
+                        </li>
                         <li>
                             <a href="{{ route('admin.dashboard') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -85,6 +87,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ route('admin.getList') }}">List Admin</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.getAdd') }}">Add Admin</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                         <li>
                             <a href="#"><i class="fa fa-users fa-fw"></i> User<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>

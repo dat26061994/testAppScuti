@@ -23,7 +23,7 @@ class UserRequest extends Request {
 	{
 		return [
 			'txtName'	=>	'required|max:100',
-			'txtUser'	=>	'required|unique:users,username|between:3,50',
+			
 			'txtEmail'	=>	'required|email|unique:users,email|max:100',
 			'txtPass'	=>	'required|max:50',
 			'txtRePass'	=>	'required|same:txtPass'
@@ -34,8 +34,7 @@ class UserRequest extends Request {
 		return [
 			'txtName.required'	=>	'Please enter your name !!',
 			'txtUser.required'	=>	'Please enter the User Name !!',
-			'txtUser.unique'	=>	'The user has already been taken!! ',
-			'txtUser.between'	=>	'User Name must between 3 to 50 digits!!',
+			
 			'txtEmail.required'	=>	'Please enter your email!!',
 			'txtEmail.unique'	=>	'The Email has already been taken!!',
 			'txtEmail.max'		=>	'Email is max 100 digits!!',

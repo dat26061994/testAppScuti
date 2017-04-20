@@ -20,9 +20,8 @@
                             <tr align="center">
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>UserName</th>
                                 <th>Email</th>
-                                <th>Level</th>
+                                <th>Active</th>
                                 <th>Delete</th>
                                 @if((Auth::user()->id)==2)
                                 <th>Edit</th>
@@ -36,21 +35,14 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{ $stt }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->username }}</td>
+                                
                                 <td>{{ $item->email }}</td>
-                                <td>@if((($item->level)==1) && (($item->id)==2))
-                                        {{ "SuperAdmin" }}
-                                    @elseif(($item->level)==2)
-                                        {{ "Member" }}
-                                    @else
-                                        {{ "Admin" }}    
-                                    @endif
-                                </td>
+                                
                                
                                 <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{!! URL::route('admin.user.getDelete',$item->id) !!}" onclick="return deleteConfirm('Do you want tho delete ??')"> Delete</a></td>
-                                @if((Auth::user()->id)==2)
+                                
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.user.getEdit',$item->id) !!}">Edit</a></td>
-                                @endif
+                                
                             </tr>
                         @endforeach    
                         </tbody>

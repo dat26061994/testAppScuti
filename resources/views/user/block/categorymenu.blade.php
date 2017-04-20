@@ -12,9 +12,9 @@
               <ul>
                 <!-- <li><a href="myaccount.html">My Account</a>
                 </li> -->
-                <li><a href="{{ URL('public/user/login') }}">Login</a>
+                <li><a href="{{ url('/login') }}">Login</a>
                 </li>
-                <li><a href="register.html">Register</a>
+                <li><a href="{{ url('/login') }}">Register</a>
                 </li>
                
               </ul>

@@ -28,10 +28,7 @@
                                 <label>Name</label>
                                 <input class="form-control" name="txtName" placeholder="Please Enter Your Name" value="{{ old('txtName') }}" />
                             </div>
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input class="form-control" name="txtUser" placeholder="Please Enter Username" value="{{ old('txtUser') }}" />
-                            </div>
+                            
                             <div class="form-group">
                                 <label>Password</label>
                                 <input type="password" class="form-control" name="txtPass" placeholder="Please Enter Password" />
@@ -44,15 +41,7 @@
                                 <label>Email</label>
                                 <input type="email" class="form-control" name="txtEmail" placeholder="Please Enter Email" value="{{ old('txtEmail') }}" />
                             </div>
-                            <div class="form-group">
-                                <label>User Level</label>
-                                <label class="radio-inline">
-                                    <input name="rdoLevel" value="1" checked="" type="radio">Admin
-                                </label>
-                                <label class="radio-inline">
-                                    <input name="rdoLevel" value="2" type="radio">Member
-                                </label>
-                            </div>
+                            
                             <button type="submit" class="btn btn-default">User Add</button>
                             <button type="reset" class="btn btn-default">Reset</button>
                         <form>

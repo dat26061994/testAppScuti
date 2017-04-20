@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 use File;
 use input;
 class ProductController extends Controller {
-
-	public function dashboard(){
-		return view('admin.dashboard');
-	}
+	
+	 public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
 	public function getList(){
 		$data = product::select('id','name','orders','status','price','created_at','image','updated_at')->orderBy('id','DESC')->get()->toArray();
