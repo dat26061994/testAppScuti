@@ -4,7 +4,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\LoginRequest;
+use Hash;
+use App\User;
 class AuthController extends Controller {
 
 	/*
@@ -34,5 +37,26 @@ class AuthController extends Controller {
 
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
+
+	
+
+	public function getLogin(){
+          return view('admin.login');
+	}
+
+	public function postLogin(LoginRequest $request){
+		$login = array(
+				'username'	=> $request->txtUser,
+				'password'	=>	$request->txtPass,
+				'level'		=>	1
+				
+			);
+		if ($this->auth->attempt($login)) {
+			return redirect()->route('admin.dashboard');
+		}else{
+			return redirect()->back();
+		}
+	}
+
 
 }

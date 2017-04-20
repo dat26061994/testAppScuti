@@ -1,36 +1,36 @@
-<?php namespace App\Http\Controllers;
+<?php
 
-class HomeController extends Controller {
+namespace App\Http\Controllers;
 
-	/*
-	|--------------------------------------------------------------------------
-	| Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders your application's "dashboard" for users that
-	| are authenticated. Of course, you are free to change or remove the
-	| controller as you wish. It is just here to get your app started!
-	|
-	*/
+use Illuminate\Http\Request;
+use DB;
+class HomeController extends Controller
+{
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $product = DB::table('products')->select('id','name','price','image','description','status')->orderBy('id','DESC')->paginate(9);
+        $product_latest = DB::table('products')->select('id','name','image','price')->orderBy('id','DESC')->skip(0)->take(3)->get();
+        $product_seller = DB::table('products')->select('id','name','price','image')->orderBy('orders','DESC')->skip(0)->take(3)->get();
+        return view('user.pages.home',compact('product','product_latest','product_seller'));
+    }
 
-	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		return view('home');
-	}
-
+    public function thisProduct($id){
+        $product_detail = DB::table('products')->where('id',$id)->first();
+        return view('user.pages.product',compact('product_detail'));
+    }
 }

@@ -1,0 +1,2 @@
+àhajgkhakj
+{{ Auth::user()->name }}
